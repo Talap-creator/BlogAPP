@@ -23,7 +23,7 @@ export default function Recent() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className='flex justify-between items-center flex-wrap mb-16'>
           <h3 className='md:text-lg'>Our Recent Post</h3>
-          <button className="bg-background text-white hover:bg-blue-700 hover:text-white font-bold py-3 px-12 rounded mt-4 md:mt-0">
+          <button onClick={() => navigate(`/blog`)} className="bg-background text-white hover:bg-blue-700 hover:text-white font-bold py-3 px-12 rounded mt-4 md:mt-0">
             View All
           </button>
         </div>
@@ -36,7 +36,7 @@ export default function Recent() {
                 <h6 className='text-text-grey ml-4'>{blog.created_at}</h6>
               </div>
               <div className='card_desc'>
-                <h6 className={`font-bold w-[100%] mt-2 ${styles.card_title}`}>{blog.title}</h6>
+                <h6 className={`font-bold h-[70px] w-[100%] mt-2 ${styles.card_title}`}>{truncateCharacters(blog.title, 40)}</h6>
                 <p className='text-text-grey mt-2 min-h-12'>{truncateCharacters(blog.short_description, 80)}</p>
 
                 <button onClick={() => navigate(`/blog/${blog.id}`)} className="text-background underline w-[35%] h-[10%] text-left mt-8 hover:text-purple-900">
