@@ -1,0 +1,24 @@
+.featured {
+    min-height: 696px;
+    background-color: var(--background);
+    color: var(--text-color);
+  }
+
+.title{
+  color: #fff;
+  font-weight: 500;
+  padding-top: 90px;
+}
+
+.featuredPostTitle{
+  padding-top: 37px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.desc{
+  color: #fff;
+  min-width: 350px;
+  padding-top: 28px;
+}
+

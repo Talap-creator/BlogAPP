@@ -1,0 +1,47 @@
+:root{
+    --background:#7C4EE4;
+    --text-color:#333333;
+    --text-grey:#666666;
+    --text-light-grey:#999999;
+    --white:#ffffff;
+}
+
+body{
+    font-family: "Roboto", sans-serif;
+}
+
+h1{
+    font-size: 64px !important;
+}
+
+h2{
+    font-size: 52px !important;
+}
+
+h3{
+    font-size: 48px !important;
+}
+
+h4{
+    font-size: 32px !important;
+}
+
+h5{
+    font-size: 26px !important;
+}
+
+
+
+a{
+    text-decoration: none;
+}
+
+.bigParagraphText{
+    font-size: 18px !important;
+
+}
+
+.smallParagraphText{
+    font-size: 16px !important;
+}
+

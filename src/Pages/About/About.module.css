@@ -1,0 +1,50 @@
+.title{
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+}
+
+.font{
+    font-family: 'Raleway', sans-serif;
+}
+
+.about_card{
+    transition: 0.3s all ease-in;
+}
+
+.about_card:hover{
+    background-color: var(--background);
+}
+
+
+.about_card h1{
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 2rem;
+    color: var(--background);
+}
+
+.about_card:hover h1{
+    color: white;
+}
+
+.about_card h4{
+    margin-top: 2rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    line-height: 32px;
+    color: var(--background);
+}
+
+.about_card:hover h4{
+    color: white;
+}
+
+.about_card h6{
+    color: var(--text-grey);
+    margin-top: 2rem;
+}
+
+.about_card:hover h6{
+    color: white;
+}
