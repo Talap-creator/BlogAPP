@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+const apiUrl = 'https://king-prawn-app-llcn9.ondigitalocean.app/blog';
+
 export const useFetchBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [latestBlog, setLatestBlog] = useState(null);
@@ -7,7 +9,7 @@ export const useFetchBlogs = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://king-prawn-app-llcn9.ondigitalocean.app/blog')
+    fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
         setBlogs(data.blogs);
@@ -23,5 +25,5 @@ export const useFetchBlogs = () => {
       });
   }, []);
 
-  return { blogs, latestBlog, loading, error };
+  return { blogs, latestBlog, loading, apiUrl, error };
 };

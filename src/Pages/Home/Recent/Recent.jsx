@@ -2,15 +2,18 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Recent.module.css';
 import { useFetchBlogs } from '../../../Js/useFetchBlogs';
+import LoadingScreen from '../../../Js/LoadingScreen/LoadingScreen';
 
 export default function Recent() {
   const { blogs, loading, error } = useFetchBlogs();
   const navigate = useNavigate();
 
-  if (loading) return <div>...</div>;
+  if (loading) return <LoadingScreen />;
   if (error) return <div>Error loading recent posts</div>;
+  if (!blogs || !Array.isArray(blogs) || blogs.length === 0) return <div>No posts available</div>;
 
   const recentBlogs = blogs.slice(0, 3); 
+
   function truncateCharacters(text, maxCharacters) {
     if (text.length > maxCharacters) {
       return text.slice(0, maxCharacters) + '...';
@@ -38,7 +41,6 @@ export default function Recent() {
               <div className='card_desc'>
                 <h6 className={`font-bold h-[70px] w-[100%] mt-2 ${styles.card_title}`}>{truncateCharacters(blog.title, 40)}</h6>
                 <p className='text-text-grey mt-2 min-h-12'>{truncateCharacters(blog.short_description, 80)}</p>
-
                 <button onClick={() => navigate(`/blog/${blog.id}`)} className="text-background underline w-[35%] h-[10%] text-left mt-8 hover:text-purple-900">
                   Read More...
                 </button>

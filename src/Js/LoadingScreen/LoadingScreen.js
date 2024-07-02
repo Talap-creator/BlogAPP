@@ -3,7 +3,7 @@ import styles from './LoadingScreen.module.css';
 
 const LoadingScreen = () => {
   return (
-    <div className={styles.loader} ><span>Loading...</span></div>
+    <div className={`select-none ${styles.loader}`} ><span>Loading...</span></div>
   );
 };
 

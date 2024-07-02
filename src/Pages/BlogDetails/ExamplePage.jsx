@@ -1,23 +1,35 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './ExamplePage.module.css';
-import { useFetchBlogs } from '../../Js/useFetchBlogs';
 import Recent from '../Home/Recent/Recent';
+import { useFetchBlogs } from '../../Js/useFetchBlogs';
+import LoadingScreen from '../../Js/LoadingScreen/LoadingScreen'; 
 
 const ExamplePage = () => {
   const { id } = useParams();
-  const { blogs, loading, error } = useFetchBlogs();
+  const { blogs, loading, error, apiUrl } = useFetchBlogs(); 
 
   const blog = blogs.find((post) => post.id.toString() === id);
 
   const getImageUrl = (imagePath) => {
-    const baseUrl = 'https://web-production-62359.up.railway.app';
-    return imagePath ? `${baseUrl}${imagePath}` : '../../img/Preview.png';
+    return imagePath ? `${apiUrl}${imagePath}` : '/media/blog_images/default.png'; 
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error loading blog</div>;
-  if (!blog) return <div>Blog post not found</div>;
+  if (loading || !blog) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <LoadingScreen /> 
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Error loading blog</div>;
+  }
+
+  if (!blog) {
+    return <div>Blog post not found</div>;
+  }
 
   return (
     <div>
