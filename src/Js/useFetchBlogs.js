@@ -7,7 +7,7 @@ export const useFetchBlogs = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://web-production-62359.up.railway.app/blog/')
+    fetch('https://king-prawn-app-llcn9.ondigitalocean.app/blog')
       .then(response => response.json())
       .then(data => {
         setBlogs(data.blogs);
