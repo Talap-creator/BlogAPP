@@ -7,7 +7,7 @@ export default function Blog() {
   const { blogs, loading, error } = useFetchBlogs();
   const navigate = useNavigate();
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>...</div>;
   if (error) return <div>Error loading blogs</div>;
 
   function truncateCharacters(text, maxCharacters) {

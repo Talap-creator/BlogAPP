@@ -7,7 +7,7 @@ export default function Recent() {
   const { blogs, loading, error } = useFetchBlogs();
   const navigate = useNavigate();
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>...</div>;
   if (error) return <div>Error loading recent posts</div>;
 
   const recentBlogs = blogs.slice(0, 3); 
