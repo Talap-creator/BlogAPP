@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const apiUrl = 'https://king-prawn-app-llcn9.ondigitalocean.app/blog';
+const apiUrl = 'https://ofy-back-3inrc.ondigitalocean.app/blog';
 
 export const useFetchBlogs = () => {
   const [blogs, setBlogs] = useState([]);

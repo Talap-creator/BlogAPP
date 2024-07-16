@@ -5,7 +5,7 @@ import { useFetchBlogs } from '../../../Js/useFetchBlogs';
 import LoadingScreen from '../../../Js/LoadingScreen/LoadingScreen';
 
 export default function Recent() {
-  const { blogs, loading, error } = useFetchBlogs();
+  const { blogs, loading, error, apiUrl } = useFetchBlogs();
   const navigate = useNavigate();
 
   if (loading) return <LoadingScreen />;
@@ -33,7 +33,7 @@ export default function Recent() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {recentBlogs.map((blog) => (
             <div key={blog.id} className={styles.recent_card}>
-              <img src={`https://king-prawn-app-llcn9.ondigitalocean.app/blog${blog.image}`} className='w-[100%] h-[50%] rounded-[18px]' alt={blog.title} />
+              <img src={`${apiUrl}${blog.image}`} className='w-[100%] h-[50%] rounded-[18px]' alt={blog.title} />
               <div className={`flex w-100 mt-8 ${styles.card_info}`}>
                 <h6 className='font-bold'>{blog.category}</h6>
                 <h6 className='text-text-grey ml-4'>{blog.created_at}</h6>
