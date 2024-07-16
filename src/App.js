@@ -12,6 +12,7 @@ import Contacts from './Pages/Contacts/Contacts';
 import Blog from './Pages/Blog/Blog';
 import LoadingScreen from './Js/LoadingScreen/LoadingScreen';
 import { useFetchBlogs } from './Js/useFetchBlogs';
+import './Js/i18next' ;
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
