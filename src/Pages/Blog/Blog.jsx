@@ -2,10 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Blog.module.css';
 import LoadingScreen from '../../Js/LoadingScreen/LoadingScreen';
+import { useFetchBlogs } from '../../Js/useFetchBlogs';
 
-export default function Blog({ blogs, loading, apiUrl }) {
+export default function Blog() {
   const navigate = useNavigate();
-
+  const { blogs, loading, apiUrl } = useFetchBlogs();
   if (loading) return <LoadingScreen />;
   if (!blogs || !Array.isArray(blogs) || blogs.length === 0) return <div>No posts available</div>;
 
@@ -14,6 +15,10 @@ export default function Blog({ blogs, loading, apiUrl }) {
       return text.slice(0, maxCharacters) + '...';
     }
     return text;
+  }
+
+  function getImageUrl(imagePath) {
+    return imagePath ? `${apiUrl}${imagePath}` : '/media/blog_images/default.png';
   }
 
   return (
@@ -25,7 +30,7 @@ export default function Blog({ blogs, loading, apiUrl }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {blogs.map((blog) => (
             <div key={blog.id} className={styles.card}>
-              <img src={`${apiUrl}${blog.image}`} className='w-[100%] h-[50%] rounded-[18px]' alt={blog.title} />
+              <img src={getImageUrl(blog.image)} className='w-[100%] h-[50%] rounded-[18px]' alt={blog.title} />
               <div className={`flex w-100 mt-8 ${styles.card_info}`}>
                 <h6 className='font-bold'>{blog.category}</h6>
                 <h6 className='text-text-grey ml-4'>{blog.created_at}</h6>

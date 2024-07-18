@@ -12,9 +12,13 @@ export const useFetchBlogs = () => {
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        setBlogs(data.blogs);
-        if (data.blogs.length > 0) {
-          const sortedBlogs = data.blogs.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        const updatedBlogs = data.blogs.map(blog => {
+          const updatedContent = blog.content.replace(/<img src="\/media/g, `<img src="${apiUrl}/media`);
+          return { ...blog, content: updatedContent };
+        });
+        setBlogs(updatedBlogs);
+        if (updatedBlogs.length > 0) {
+          const sortedBlogs = updatedBlogs.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
           setLatestBlog(sortedBlogs[0]);
         }
         setLoading(false);
